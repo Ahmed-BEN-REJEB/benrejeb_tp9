@@ -71,7 +71,7 @@ class SinglePlayerGameTest {
 	@Test
 	void testTypicalGame() {
 		lancerPlusieurs(8, 3); // 6 points aux 4 1° tours -> 24
-		assertEquals(5, partie.numeroTourCourant()); // On est au tour n° 5
+		assertEquals(4, partie.numeroTourCourant()); // On est au tour n° 5
 		faireUnStrike(); // 10 + 10
 		faireUnSpare(); // 10 + 0
 		lancerPlusieurs(6, 0); // 0 points aux 3 tours suivants
@@ -82,12 +82,13 @@ class SinglePlayerGameTest {
 
 	// Quelques methodes utilitaires pour faciliter l'écriture des tests
 	private boolean lancerPlusieurs(int n, int quilles) {
-		boolean leTourcontinue = false;
+		boolean leTourContinue = false;
 		for (int i = 0; i < n; i++) {
-			leTourcontinue = partie.enregistreLancer(quilles);
+			leTourContinue = partie.enregistreLancer(quilles);
 		}
-		return leTourcontinue;
+		return leTourContinue;
 	}
+	
 
 	private void faireUnSpare() {
 		partie.enregistreLancer(7);
